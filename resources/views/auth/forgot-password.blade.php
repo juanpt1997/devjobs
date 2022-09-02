@@ -7,7 +7,7 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {{ __('¿Olvidaste tu password? coloca tu email de registro y te enviaremos un enlace para que puedas crear uno nuevo.') }}
         </div>
 
         <!-- Session Status -->
@@ -16,21 +16,30 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('password.email') }}">
+        <form method="POST" action="{{ route('password.email') }}" novalidate>
             @csrf
 
             <!-- Email Address -->
             <div>
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
+                    autofocus />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
+            <div class="flex justify-between my-5">
+                <x-link :href="route('login')">
+                    Iniciar Sesión
+                </x-link>
+
+                <x-link :href="route('register')">
+                    Crear Cuenta
+                </x-link>
             </div>
+
+            <x-button class="w-full justify-center">
+                {{ __('Enviar instrucciones') }}
+            </x-button>
         </form>
     </x-auth-card>
 </x-guest-layout>
