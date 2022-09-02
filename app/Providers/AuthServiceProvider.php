@@ -28,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // ? Personalizando mensaje
         VerifyEmail::toMailUsing(function($notifiable, $url) {
             return (new MailMessage)
                 ->subject('Verificar Cuenta')
