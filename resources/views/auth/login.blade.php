@@ -37,7 +37,7 @@
                     <input id="remember_me" type="checkbox"
                         class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Recordarme') }}</span>
                 </label>
             </div>
 
@@ -51,8 +51,8 @@
                 </x-link>
             </div>
 
-            <x-button class="ml-3">
-                {{ __('Log in') }}
+            <x-button class="w-full justify-center">
+                {{ __('Iniciar Sesión') }}
             </x-button>
         </form>
     </x-auth-card>
