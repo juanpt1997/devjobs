@@ -11,6 +11,9 @@ use Livewire\WithFileUploads;
 
 class EditarVacante extends Component
 {
+    // ! $id es una palabra reservada entonces no sirve
+    // public $id;
+    public $vacante_id;
     public $titulo;
     public $salario;
     public $categoria;
@@ -27,12 +30,12 @@ class EditarVacante extends Component
         'categoria' => 'required',
         'empresa' => 'required',
         'ultimo_dia' => 'required',
-        'descripcion' => 'required',
-        'imagen' => 'required|image|max:1024'
+        'descripcion' => 'required'
     ];
 
     public function mount(Vacante $vacante)
     {
+        $this->vacante_id = $vacante->id;
         $this->titulo = $vacante->titulo;
         $this->salario = $vacante->salario_id;
         $this->categoria = $vacante->categoria_id;
@@ -47,11 +50,21 @@ class EditarVacante extends Component
     {
         $datos = $this->validate();
 
-        // Almacenar la imagen
-        $imagen = $this->imagen->store('public/vacantes');
-        $datos['imagen'] = str_replace('public/vacantes/', '', $imagen);
+        // Si hay una nueva imagen
 
-        // Editar la vacante
+        // Encontrar la vacante a editar
+        $vacante = Vacante::find($this->vacante_id);
+
+        // Asignar los valores
+        $vacante->titulo = $datos['titulo'];
+        $vacante->salario_id = $datos['salario'];
+        $vacante->categoria_id = $datos['categoria'];
+        $vacante->empresa = $datos['empresa'];
+        $vacante->ultimo_dia = $datos['ultimo_dia'];
+        $vacante->descripcion = $datos['descripcion'];
+
+        // Guardar la vacante
+        $vacante->save();
 
         // Crear mensaje
         session()->flash('mensaje', 'La vacante se modificó correctamente');

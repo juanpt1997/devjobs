@@ -1,4 +1,4 @@
-<form class="md:w-1/2 space-y-5" wire:submit.prevent='crearVacante'>
+<form class="md:w-1/2 space-y-5" wire:submit.prevent='editarVacante'>
     {{-- Título vacante --}}
     <div>
         <x-label for="titulo" :value="__('Título Vacante')" />
