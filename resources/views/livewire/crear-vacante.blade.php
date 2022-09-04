@@ -1,9 +1,13 @@
-<form class="md:w-1/2 space-y-5">
+<form class="md:w-1/2 space-y-5" wire:submit.prevent='crearVacante'>
     {{-- Título vacante --}}
     <div>
         <x-label for="titulo" :value="__('Título Vacante')" />
         <x-input id="titulo" class="block mt-1 w-full" type="text" wire:model="titulo" :value="old('titulo')"
             placeholder="Título Vacante" />
+        
+        @error('titulo')
+            {{ $message }}
+        @enderror
     </div>
 
     {{-- Salario Mensual --}}
