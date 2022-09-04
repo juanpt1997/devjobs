@@ -73,13 +73,13 @@
     {{-- Imagen --}}
     <div>
         <x-label for="imagen" :value="__('Imagen')" />
-        <x-input id="imagen" class="block mt-1 w-full" type="file" wire:model="imagen" accept='image/*' />
+        <x-input id="imagen" class="block mt-1 w-full" type="file" wire:model="imagen_nueva" accept='image/*' />
         {{-- ? Two way data binding --}}
         {{-- Envío datos al servidor pero también tengo una respuesta --}}
         <div class="my-5 w-80">
             @if($imagen)
-                <x-label :value="__('Imagen Actual')" />
-                <img src="{{ asset('storage/vacantes/' . $imagen) }}" alt="{{ 'Imagen Vacante ' . $titulo }}">
+                <x-label :value="__($imagen_nueva ? 'Imagen Nueva' : 'Imagen Actual')" />
+                <img src="{{ $imagen_nueva ? $imagen_nueva->temporaryUrl() : asset('storage/vacantes/' . $imagen) }}" alt="{{ 'Imagen Vacante ' . $titulo }}">
             @endif
         </div>
         @error('imagen')
