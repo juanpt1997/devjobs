@@ -78,7 +78,8 @@
         {{-- Envío datos al servidor pero también tengo una respuesta --}}
         <div class="my-5 w-80">
             @if($imagen)
-                <img src="{{ $imagen->temporaryUrl() }}" alt="imagen">
+                <x-label :value="__('Imagen Actual')" />
+                <img src="{{ asset('storage/vacantes/' . $imagen) }}" alt="{{ 'Imagen Vacante ' . $titulo }}">
             @endif
         </div>
         @error('imagen')
@@ -88,6 +89,6 @@
 
     {{-- Submit, crear vacante --}}
     <x-button>
-        Crear Vacante
+        Guardar Cambios
     </x-button>
 </form>

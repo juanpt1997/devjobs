@@ -6,6 +6,7 @@ use App\Models\Salario;
 use App\Models\Vacante;
 use Livewire\Component;
 use App\Models\Categoria;
+use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
 
 class EditarVacante extends Component
@@ -33,6 +34,13 @@ class EditarVacante extends Component
     public function mount(Vacante $vacante)
     {
         $this->titulo = $vacante->titulo;
+        $this->salario = $vacante->salario_id;
+        $this->categoria = $vacante->categoria_id;
+        $this->empresa = $vacante->empresa;
+        // $this->ultimo_dia = $vacante->ultimo_dia->format('Y-m-d');
+        $this->ultimo_dia = Carbon::parse($vacante->ultimo_dia)->format('Y-m-d');
+        $this->descripcion = $vacante->descripcion;
+        $this->imagen = $vacante->imagen;
     }
 
     public function editarVacante()
