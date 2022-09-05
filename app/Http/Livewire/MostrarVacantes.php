@@ -17,6 +17,13 @@ class MostrarVacantes extends Component
     //     );
     // }
 
+    protected $listeners = ['eliminarVacante'];
+    // public function eliminarVacante($id) // También sirve originalmente, afortunadamente livewire soporta route model binding y se simplifica como está abajo
+    public function eliminarVacante(Vacante $vacante)
+    {
+        $vacante->delete();
+    }
+
     public function render()
     {
         $vacantes = Vacante::where('user_id', auth()->user()->id)->paginate(10);

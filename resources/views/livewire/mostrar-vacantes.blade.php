@@ -25,7 +25,7 @@
                         class="bg-red-600 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                         Eliminar
                     </button> --}}
-                    <button wire:click="$emit('prueba', {{ $vacante->id }})"
+                    <button wire:click="$emit('mostrarAlerta', {{ $vacante->id }})"
                         class="bg-red-600 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center">
                         Eliminar
                     </button>
@@ -45,9 +45,9 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        Livewire.on('prueba', (vacanteId) => {
+        Livewire.on('mostrarAlerta', (vacanteId) => {
             Swal.fire({
-                title: `¿Eliminar Vacante? ${vacanteId}`,
+                title: `¿Eliminar Vacante?`,
                 text: "Una vacante eliminada no se puede recuperar",
                 icon: 'warning',
                 showCancelButton: true,
@@ -57,9 +57,13 @@
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    // Eliminar la vacante
+                    Livewire.emit('eliminarVacante', vacanteId);
+
+                    // Mensaje confirmación
                     Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
+                        'Se eliminó la vacante!',
+                        'Eliminado correctamente.',
                         'success'
                     )
                 }
