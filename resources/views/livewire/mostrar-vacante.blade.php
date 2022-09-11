@@ -16,11 +16,11 @@
             </p>
 
             <p class="font-bold text-sm uppercase text-gray-800 my-3">Categoría:
-                <span class="normal-case font-normal">{{ $vacante->categoria_id }}</span>
+                <span class="normal-case font-normal">{{ $vacante->categoria->categoria }}</span>
             </p>
 
             <p class="font-bold text-sm uppercase text-gray-800 my-3">Salario:
-                <span class="normal-case font-normal">{{ $vacante->salario_id }}</span>
+                <span class="normal-case font-normal">{{ $vacante->salario->salario }}</span>
             </p>
         </div>
     </div>
