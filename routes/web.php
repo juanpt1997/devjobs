@@ -25,6 +25,6 @@ Route::get('/vacantes/{vacante}/edit', [VacanteController::class, 'edit'])->midd
 Route::get('/vacantes/{vacante}', [VacanteController::class, 'show'])->name('vacantes.show');
 
 // Notificaciones
-Route::get('/notificaciones', NotificacionController::class);
+Route::get('/notificaciones', NotificacionController::class)->name('notificaciones.index');
 
 require __DIR__.'/auth.php';
