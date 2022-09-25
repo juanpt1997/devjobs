@@ -21,7 +21,7 @@
                 <div class="mb-5">
                     <label class="block mb-1 text-sm text-gray-700 uppercase font-bold">Categoría</label>
                     <select wire:model="categoria" class="border-gray-300 p-2 w-full">
-                        <option>--Seleccione--</option>
+                        <option value="">--Seleccione--</option>
             
                         @foreach ($categorias as $categoria )
                             <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
@@ -32,7 +32,7 @@
                 <div class="mb-5">
                     <label class="block mb-1 text-sm text-gray-700 uppercase font-bold">Salario Mensual</label>
                     <select wire:model="salario" class="border-gray-300 p-2 w-full">
-                        <option>-- Seleccione --</option>
+                        <option value="">-- Seleccione --</option>
                         @foreach ($salarios as $salario)
                             <option value="{{ $salario->id }}">{{$salario->salario}}</option>
                         @endforeach
