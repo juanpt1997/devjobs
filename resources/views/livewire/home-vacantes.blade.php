@@ -1,4 +1,6 @@
 <div>
+    <livewire:filtrar-vacantes/>
+
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     <div class="py-12">
         <div class="max-w-7xl mx-auto">
